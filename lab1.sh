@@ -8,27 +8,51 @@ file_quantity=20
 dir_quantity_1=5
 dir_quantity_2=10 
 
-# Возможные ключи
-while [ -n "$1" ]
+clear
+x=0
+# меню
+while [ $x = 0 ]
 do
-case "$1" in
--d) path="$2"
-shift ;;
--dn) dir_name="$2"
-shift ;;
--fn) file_name="$2"
-shift ;;
--fq) file_quantity=$2
-shift ;;
--dq1) dir_quantity_1=$2
-shift ;;
--dq2) dir_quantity_2=$2
-shift ;;
---) shift
-break ;;
-*) echo "$1 is not an option" break ;; 
+
+echo "Путь: $path"
+echo "Шаблон имени директорий: $dir_name"
+echo "Шаблон имени файлов: $file_name"
+echo "Кол-во директорий 1-го уровня: $dir_quantity_1"
+echo "Кол-во директорий 2-го уровня: $dir_quantity_2"
+echo "Кол-во файлов: $file_quantity"
+echo
+echo "МЕНЮ"
+echo "1) Выполнить"
+echo "2) Задать путь"
+echo "3) Задать шаблон имени директорий"
+echo "4) Задать шаблон имени файлов"
+echo "5) Задать кол-во директорий 1-го уровня"
+echo "6) Задать кол-во директорий 2-го уровня"
+echo "7) Задать кол-во файлов"
+echo "0) Выход"
+
+read option
+clear
+
+case $option in
+1) break ;;
+2) echo -en "Путь: "
+read path ;;
+3) echo -en "Шаблон имени директорий: "
+read dir_name ;;
+4) echo -en "Шаблон имени файла: "
+read file_name ;;
+5) echo -en "Кол-во директорий 1-го уровня: "
+read dir_quantity_1 ;;
+6) echo -en "Кол-во директорий 2-го уровня: "
+read dir_quantity_2 ;;
+7) echo -en "Кол-во файлов: "
+read file_quantity ;;
+0) exit ;;
+*) clear
+echo "Выберите один из пунктов меню\n" ;; 
 esac
-shift
+clear
 done
 
 
@@ -57,3 +81,4 @@ done
 cd ".."
 done
 
+echo "Скрипт выполнен"
