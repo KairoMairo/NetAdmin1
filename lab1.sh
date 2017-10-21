@@ -1,12 +1,14 @@
 #!/bin/bash
 
+# Значения по-умолчанию
 path=$(pwd)
-dir_name="folder"
+dir_name="directory"
 file_name="file"
 file_quantity=20
-folder_quantity_1=5
-folder_quantity_2=10 
+dir_quantity_1=5
+dir_quantity_2=10 
 
+# Возможные ключи
 while [ -n "$1" ]
 do
 case "$1" in
@@ -18,9 +20,9 @@ shift ;;
 shift ;;
 -fq) file_quantity=$2
 shift ;;
--dq1) folder_quantity_1=$2
+-dq1) dir_quantity_1=$2
 shift ;;
--dq2) folder_quantity_2=$2
+-dq2) dir_quantity_2=$2
 shift ;;
 --) shift
 break ;;
@@ -29,15 +31,16 @@ esac
 shift
 done
 
+
 cd $path
 
-for i in $(seq $folder_quantity_1)
+for i in $(seq $dir_quantity_1)
 do
 new_dir_name=$dir_name"_"$i
 mkdir $new_dir_name
 cd $new_dir_name
 
-for j in $(seq $folder_quantity_2)
+for j in $(seq $dir_quantity_2)
 do
 new_dir_name=$dir_name"_"$j
 mkdir $new_dir_name
